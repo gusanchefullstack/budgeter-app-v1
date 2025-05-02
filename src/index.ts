@@ -4,6 +4,7 @@ import morgan from "morgan";
 const app = express();
 import config from "#config/config.js";
 import { errorHandler } from "#middleware/errorHandler.js";
+import apiRouter from "#routes/index.js";
 
 app.use(express.json());
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("Hello World fo Typescript");
 });
+app.use("/api", apiRouter);
 
 app.use(errorHandler);
 
