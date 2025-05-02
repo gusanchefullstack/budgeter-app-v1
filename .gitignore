@@ -137,3 +137,6 @@ dist
 
 # Test coverage
 /coverage
+
+# Prisma.io
+generated/prisma/

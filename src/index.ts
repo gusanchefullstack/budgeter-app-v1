@@ -10,7 +10,6 @@ app.use(cors());
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
-  throw new Error("Something went wrong");
   res.send("Hello World fo Typescript");
 });
 
