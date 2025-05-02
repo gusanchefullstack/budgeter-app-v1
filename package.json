@@ -1,0 +1,56 @@
+{
+  "name": "budgeter-app-v1",
+  "version": "1.0.0",
+  "description": "Budget control app using express.js, node.js, typescript, prisma.io and react.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch --env-file .env src/index.ts",
+    "start": "node --env-file .env dist/src/index.js",
+    "build": "tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest",
+    "test:run": "vitest --run",
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage"
+  },
+  "imports": {
+    "#*": "./src/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gusanchefullstack/budgeter-app-v1.git"
+  },
+  "keywords": [],
+  "author": "Gustavo Sanchez <gustavosanchezgalarza@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gusanchefullstack/budgeter-app-v1/issues"
+  },
+  "homepage": "https://github.com/gusanchefullstack/budgeter-app-v1#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "@tsconfig/node22": "^22.0.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.15.3",
+    "@vitest/coverage-v8": "^3.1.2",
+    "@vitest/eslint-plugin": "^1.1.44",
+    "eslint": "^9.25.1",
+    "eslint-plugin-perfectionist": "^4.12.3",
+    "prettier": "^3.5.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.1",
+    "vitest": "^3.1.2"
+  }
+}
