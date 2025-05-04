@@ -3,7 +3,7 @@ import express from "express";
 import morgan from "morgan";
 const app = express();
 import config from "#config/config.js";
-import { errorHandler } from "#middleware/errorHandler.js";
+import { errorHandler } from "#middleware/expressErrorHandler.js";
 import apiRouter from "#routes/index.js";
 
 app.use(express.json());
