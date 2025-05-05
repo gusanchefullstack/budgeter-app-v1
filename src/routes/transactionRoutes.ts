@@ -8,8 +8,8 @@ const transactionRouter = Router();
 transactionRouter.get("/", transactionController.getAllTransactions);
 transactionRouter.post(
   "/",
-  body("amount").isNumeric().withMessage("Transaction amount must be a number"),
-  body("date").isISO8601({ strict: true, strictSeparator: true }).withMessage("Transaction date must be a valid ISO8601 date"),
+  body("amount").exists().withMessage("Transaction amount is required").isNumeric().withMessage("Transaction amount must be a number"),
+  body("date").exists().withMessage("Date of transaction is required").isISO8601({ strict: true, strictSeparator: true }).withMessage("Transaction date must be a valid ISO8601 date. Strings with date and time separated by anything other than a T will be invalid"),
   inputValidator,
   transactionController.createTransaction,
 );
