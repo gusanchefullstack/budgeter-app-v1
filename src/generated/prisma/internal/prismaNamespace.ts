@@ -582,8 +582,9 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
 
 export const UserScalarFieldEnum = {
   id: 'id',
-  email: 'email',
+  username: 'username',
   password: 'password',
+  refreshToken: 'refreshToken',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
