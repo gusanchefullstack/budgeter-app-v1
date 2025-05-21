@@ -15,18 +15,84 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  username     String   @unique
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  username     String        @unique
   password     String
   refreshToken String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transactions Transaction[]
+  budgets      Budget[]
 }
 
 model Transaction {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  amount    Float
-  date      DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  amount      Float
+  date        DateTime
+  description String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  owner       User        @relation(fields: [ownerId], references: [id])
+  ownerId     String      @db.ObjectId
+  conceptItem ConceptItem
+}
+
+enum CATEGORY_TYPE {
+  INCOME
+  EXPENSE
+}
+
+enum CONCEPT_TYPE {
+  INCOME
+  EXPENSE
+}
+
+enum CONCEPT_FREQUENCY {
+  ONE_TIME
+  DAILY
+  WEEKLY
+  MONTHLY
+  BI_MONTHLY
+  QUARTERLY
+  SEMI_ANNUALLY
+  ANNUALLY
+}
+
+model Budget {
+  id        String           @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  owner     User             @relation(fields: [ownerId], references: [id])
+  ownerId   String           @db.ObjectId
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  startDate DateTime
+  endDate   DateTime
+  incomes   BudgetCategory[]
+  expenses  BudgetCategory[]
+}
+
+type BudgetCategory {
+  name     String
+  type     CATEGORY_TYPE      @default(EXPENSE)
+  concepts BudgetConcept[]
+}
+
+type BudgetConcept {
+  name                    String
+  type                    CONCEPT_TYPE      @default(EXPENSE)
+  frequency               CONCEPT_FREQUENCY @default(ONE_TIME)
+  recurringBudgetAmount   Float
+  plannedRecurringAmounts BudgetBucket[]
+  actualRecurringAmounts  BudgetBucket[]
+}
+
+type BudgetBucket {
+  period String
+  amount Float
+}
+
+type ConceptItem {
+  name      String
+  type      CONCEPT_TYPE      @default(EXPENSE)
+  frequency CONCEPT_FREQUENCY @default(ONE_TIME)
 }

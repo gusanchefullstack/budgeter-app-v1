@@ -5,7 +5,6 @@ import { NextFunction, Request, Response } from "express";
 
 import { prisma } from "../db.js";
 
-
 export const registerHandler = async (req: Request, res: Response, next: NextFunction) => {
   const { password, username } = req.body as IBodyUser;
 
@@ -50,16 +49,17 @@ export const loginHandler = async (req: Request, res: Response, next: NextFuncti
       else {
         //generate tokens: access and refress tokens
         const accessToken = createAccessToken(user.id);
-        const refreshToken = createRefreshToken(user.id);
-        const userUpdatedwithToken = await prisma.user.update({
-          data: {
-            refreshToken,
-          },
-          where: {
-            id: user.id,
-          },
-        });
-        res.cookie("refreshToken", userUpdatedwithToken.refreshToken, { httpOnly: true, path: "/refresh_token" });
+        // const refreshToken = createRefreshToken(user.id);
+        // await prisma.user.update({
+        //   data: {
+        //     refreshToken,
+        //   },
+        //   where: {
+        //     id: user.id,
+        //   },
+        // });
+        // res.cookie("refreshToken", refreshToken, { httpOnly: true, maxAge: 900000, path: "/refresh_token" });
+        // console.log(refreshToken)
         res.json({ accessToken: accessToken });
       }
     }
@@ -80,25 +80,24 @@ export const logoutHandler = (req: Request, res: Response, next: NextFunction) =
 
 export const protect = (req: Request, res: Response, next: NextFunction) => {
   const bearer = req.headers.authorization;
-  if(!bearer){
-    res.status(401).json({message: "Unauthorized"})
-    return
+  if (!bearer) {
+    res.status(401).json({ message: "Unauthorized" });
+    return;
   }
-  
+
   const token = bearer.split(" ")[1];
-  if(!token){
-    res.status(401).json({message: "Not a valid token"})
-    return
+  if (!token) {
+    res.status(401).json({ message: "Not a valid token" });
+    return;
   }
 
   try {
-     const user = validateToken(token)
-     req.user = user as {userId: string}
-     next()
+    const user = validateToken(token);
+    req.user = user as { userId: string };
+    next();
   } catch (error) {
-    console.error(error)
-    res.status(401).json({message: 'Not a valid token'})
-    return
+    console.error(error);
+    res.status(401).json({ message: "Not a valid token" });
+    return;
   }
-
-}
+};

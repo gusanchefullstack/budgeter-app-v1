@@ -1,9 +1,8 @@
-import { ITransactionDTO } from "#types/transaction.js";
+import { ITransaction } from "#types/transaction.js";
 
 import { prisma } from "../db.js";
 
-
-const createTransaction = async (txData: ITransactionDTO) => {
+const createTransaction = async (txData: ITransaction) => {
   const transaction = await prisma.transaction.create({
     data: txData,
   });
