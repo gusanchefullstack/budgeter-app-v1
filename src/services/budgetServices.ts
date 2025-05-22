@@ -48,7 +48,7 @@ const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
     });
     return updatedBudget;
   }
-  if (type === CONCEPT_TYPE.expenses) {
+  else { 
     const categories = budget?.expenses.find((expense) => expense.name === category);
     categories?.concepts.push({
       name,
