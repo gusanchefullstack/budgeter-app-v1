@@ -9,80 +9,55 @@ const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
   const { budgetId, name, type, frequency, recurringBudgetAmount, category } = concept;
 
   const budget = await prisma.budget.findUnique({
-    where: {
-      id: budgetId,
+    where: { id: budgetId },
+  });
+
+  if (!budget) {
+    throw new Error("Budget not found");
+  }
+
+  const categories =
+    type === CONCEPT_TYPE.incomes
+      ? budget.incomes.find((income) => income.name === category)
+      : budget.expenses.find((expense) => expense.name === category);
+
+  if (!categories) {
+    throw new Error(`Category ${category} not found in ${type}`);
+  }
+
+  const newConcept = {
+    name,
+    frequency,
+    recurringBudgetAmount,
+    plannedRecurringAmounts: [],
+    actualRecurringAmounts: [],
+  };
+
+  categories.concepts.push(newConcept);
+
+  // Primero eliminamos la categoría existente
+  await prisma.budget.update({
+    where: { id: budgetId },
+    data: {
+      [type]: {
+        deleteMany: {
+          where: { name: category },
+        },
+      },
     },
   });
-  if (type === CONCEPT_TYPE.incomes) {
-    const categories = budget?.incomes.find((income) => income.name === category);
-    categories?.concepts.push({
-      name,
-      frequency,
-      recurringBudgetAmount,
-      plannedRecurringAmounts: [],
-      actualRecurringAmounts: [],
-    });
-    await prisma.budget.update({
-      where: {
-        id: budgetId,
+
+  // Luego actualizamos con la categoría modificada
+  const updatedBudget = await prisma.budget.update({
+    where: { id: budgetId },
+    data: {
+      [type]: {
+        push: categories,
       },
-      data: {
-        [type]: {
-          deleteMany: {
-            where:{
-              name:category
-            }
-          },
-        },
-      },
-    });
-    const updatedBudget = await prisma.budget.update({
-      where: {
-        id: budgetId,
-      },
-      data: {
-        [type]: {
-          push: categories,
-        },
-      },
-    });
-    return updatedBudget;
-  }
-  else { 
-    const categories = budget?.expenses.find((expense) => expense.name === category);
-    categories?.concepts.push({
-      name,
-      frequency,
-      recurringBudgetAmount,
-      plannedRecurringAmounts: [],
-      actualRecurringAmounts: [],
-    });
-    await prisma.budget.update({
-      where: {
-        id: budgetId,
-      },
-      data: {
-        [type]: {
-          deleteMany: {
-            where:{
-              name:category
-            }
-          },
-        },
-      },
-    });
-    const updatedBudget = await prisma.budget.update({
-      where: {
-        id: budgetId,
-      },
-      data: {
-        [type]: {
-          push: categories,
-        },
-      },
-    });
-    return updatedBudget;
-  }
+    },
+  });
+
+  return updatedBudget;
 };
 
 const addCategoryToBudget = async (category: IBudgetCategoryCreateDTO) => {
