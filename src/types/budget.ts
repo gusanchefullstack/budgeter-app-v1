@@ -1,6 +1,8 @@
 /* eslint-disable perfectionist/sort-modules */
 /* eslint-disable perfectionist/sort-interfaces */
 
+import { CONCEPT_FREQUENCY, CONCEPT_TYPE } from "#generated/prisma/enums.js";
+
 export interface IBudgetCreateDTO {
   name: string;
   ownerId: string;
@@ -9,6 +11,14 @@ export interface IBudgetCreateDTO {
 }
 export interface IBudgetCategoryCreateDTO {
   name: string;
-  type: string;
+  budgetId: string;
+  type: CONCEPT_TYPE;
+}
+export interface ICategoryConceptDTO {
+  name: string;
+  type: CONCEPT_TYPE;
+  frequency: CONCEPT_FREQUENCY;
+  recurringBudgetAmount: number;
+  category: string;
   budgetId: string;
 }

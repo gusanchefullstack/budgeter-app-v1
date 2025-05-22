@@ -197,8 +197,8 @@ export type BudgetWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   startDate?: Prisma.DateTimeFilter<"Budget"> | Date | string
   endDate?: Prisma.DateTimeFilter<"Budget"> | Date | string
-  incomes?: Prisma.BudgetCategoryCompositeListFilter | Prisma.BudgetCategoryObjectEqualityInput[]
-  expenses?: Prisma.BudgetCategoryCompositeListFilter | Prisma.BudgetCategoryObjectEqualityInput[]
+  incomes?: Prisma.CategoryCompositeListFilter | Prisma.CategoryObjectEqualityInput[]
+  expenses?: Prisma.CategoryCompositeListFilter | Prisma.CategoryObjectEqualityInput[]
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -210,8 +210,8 @@ export type BudgetOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  incomes?: Prisma.BudgetCategoryOrderByCompositeAggregateInput
-  expenses?: Prisma.BudgetCategoryOrderByCompositeAggregateInput
+  incomes?: Prisma.CategoryOrderByCompositeAggregateInput
+  expenses?: Prisma.CategoryOrderByCompositeAggregateInput
   owner?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -226,8 +226,8 @@ export type BudgetWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Budget"> | Date | string
   startDate?: Prisma.DateTimeFilter<"Budget"> | Date | string
   endDate?: Prisma.DateTimeFilter<"Budget"> | Date | string
-  incomes?: Prisma.BudgetCategoryCompositeListFilter | Prisma.BudgetCategoryObjectEqualityInput[]
-  expenses?: Prisma.BudgetCategoryCompositeListFilter | Prisma.BudgetCategoryObjectEqualityInput[]
+  incomes?: Prisma.CategoryCompositeListFilter | Prisma.CategoryObjectEqualityInput[]
+  expenses?: Prisma.CategoryCompositeListFilter | Prisma.CategoryObjectEqualityInput[]
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
@@ -264,8 +264,8 @@ export type BudgetCreateInput = {
   updatedAt?: Date | string
   startDate: Date | string
   endDate: Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
   owner: Prisma.UserCreateNestedOneWithoutBudgetsInput
 }
 
@@ -277,8 +277,8 @@ export type BudgetUncheckedCreateInput = {
   updatedAt?: Date | string
   startDate: Date | string
   endDate: Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetUpdateInput = {
@@ -287,8 +287,8 @@ export type BudgetUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
   owner?: Prisma.UserUpdateOneRequiredWithoutBudgetsNestedInput
 }
 
@@ -299,8 +299,8 @@ export type BudgetUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetCreateManyInput = {
@@ -311,8 +311,8 @@ export type BudgetCreateManyInput = {
   updatedAt?: Date | string
   startDate: Date | string
   endDate: Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetUpdateManyMutationInput = {
@@ -321,8 +321,8 @@ export type BudgetUpdateManyMutationInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetUncheckedUpdateManyInput = {
@@ -332,8 +332,8 @@ export type BudgetUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetListRelationFilter = {
@@ -346,10 +346,9 @@ export type BudgetOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type BudgetCategoryObjectEqualityInput = {
+export type CategoryObjectEqualityInput = {
   name: string
-  type: $Enums.CATEGORY_TYPE
-  concepts?: Prisma.BudgetConceptObjectEqualityInput[]
+  concepts?: Prisma.CategoryConceptObjectEqualityInput[]
 }
 
 export type BudgetCountOrderByAggregateInput = {
@@ -424,10 +423,9 @@ export type BudgetUncheckedUpdateManyWithoutOwnerNestedInput = {
   deleteMany?: Prisma.BudgetScalarWhereInput | Prisma.BudgetScalarWhereInput[]
 }
 
-export type BudgetCategoryCreateInput = {
+export type CategoryCreateInput = {
   name: string
-  type?: $Enums.CATEGORY_TYPE
-  concepts?: Prisma.BudgetConceptCreateInput | Prisma.BudgetConceptCreateInput[]
+  concepts?: Prisma.CategoryConceptCreateInput | Prisma.CategoryConceptCreateInput[]
 }
 
 export type BudgetCreateWithoutOwnerInput = {
@@ -437,8 +435,8 @@ export type BudgetCreateWithoutOwnerInput = {
   updatedAt?: Date | string
   startDate: Date | string
   endDate: Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetUncheckedCreateWithoutOwnerInput = {
@@ -448,8 +446,8 @@ export type BudgetUncheckedCreateWithoutOwnerInput = {
   updatedAt?: Date | string
   startDate: Date | string
   endDate: Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetCreateOrConnectWithoutOwnerInput = {
@@ -497,8 +495,8 @@ export type BudgetCreateManyOwnerInput = {
   updatedAt?: Date | string
   startDate: Date | string
   endDate: Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListCreateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListCreateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetUpdateWithoutOwnerInput = {
@@ -507,8 +505,8 @@ export type BudgetUpdateWithoutOwnerInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetUncheckedUpdateWithoutOwnerInput = {
@@ -517,8 +515,8 @@ export type BudgetUncheckedUpdateWithoutOwnerInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 export type BudgetUncheckedUpdateManyWithoutOwnerInput = {
@@ -527,8 +525,8 @@ export type BudgetUncheckedUpdateManyWithoutOwnerInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  incomes?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
-  expenses?: Prisma.XOR<Prisma.BudgetCategoryListUpdateEnvelopeInput, Prisma.BudgetCategoryCreateInput> | Prisma.BudgetCategoryCreateInput[]
+  incomes?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
+  expenses?: Prisma.XOR<Prisma.CategoryListUpdateEnvelopeInput, Prisma.CategoryCreateInput> | Prisma.CategoryCreateInput[]
 }
 
 
@@ -541,8 +539,8 @@ export type BudgetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   updatedAt?: boolean
   startDate?: boolean
   endDate?: boolean
-  incomes?: boolean | Prisma.BudgetCategoryDefaultArgs<ExtArgs>
-  expenses?: boolean | Prisma.BudgetCategoryDefaultArgs<ExtArgs>
+  incomes?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
+  expenses?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["budget"]>
 
@@ -578,8 +576,8 @@ export type $BudgetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     endDate: Date
   }, ExtArgs["result"]["budget"]>
   composites: {
-    incomes: Prisma.$BudgetCategoryPayload[]
-    expenses: Prisma.$BudgetCategoryPayload[]
+    incomes: Prisma.$CategoryPayload[]
+    expenses: Prisma.$CategoryPayload[]
   }
 }
 

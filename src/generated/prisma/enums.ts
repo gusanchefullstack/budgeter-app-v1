@@ -7,17 +7,9 @@
 *
 * 🟢 You can import this file directly.
 */
-export const CATEGORY_TYPE = {
-  INCOME: 'INCOME',
-  EXPENSE: 'EXPENSE'
-} as const
-
-export type CATEGORY_TYPE = (typeof CATEGORY_TYPE)[keyof typeof CATEGORY_TYPE]
-
-
 export const CONCEPT_TYPE = {
-  INCOME: 'INCOME',
-  EXPENSE: 'EXPENSE'
+  incomes: 'incomes',
+  expenses: 'expenses'
 } as const
 
 export type CONCEPT_TYPE = (typeof CONCEPT_TYPE)[keyof typeof CONCEPT_TYPE]
@@ -26,11 +18,7 @@ export type CONCEPT_TYPE = (typeof CONCEPT_TYPE)[keyof typeof CONCEPT_TYPE]
 export const CONCEPT_FREQUENCY = {
   ONE_TIME: 'ONE_TIME',
   DAILY: 'DAILY',
-  WEEKLY: 'WEEKLY',
   MONTHLY: 'MONTHLY',
-  BI_MONTHLY: 'BI_MONTHLY',
-  QUARTERLY: 'QUARTERLY',
-  SEMI_ANNUALLY: 'SEMI_ANNUALLY',
   ANNUALLY: 'ANNUALLY'
 } as const
 

@@ -1,19 +1,28 @@
 import budgetServices from "#services/budgetServices.js";
 // eslint-disable-next-line perfectionist/sort-named-imports
-import { IBudgetCreateDTO, IBudgetCategoryCreateDTO } from "#types/budget.js";
+import { IBudgetCreateDTO, IBudgetCategoryCreateDTO, ICategoryConceptDTO } from "#types/budget.js";
 import { NextFunction, Request, Response } from "express";
 
-const createBudgetCategory = async (req: Request, res: Response, next: NextFunction) => {
-  const budgetCategory = req.body as IBudgetCategoryCreateDTO;
+const createCategoryConcept = async (req: Request, res: Response, next: NextFunction) => {
+  const categoryConcept = req.body as ICategoryConceptDTO;
   try {
-    const existingBudget = await budgetServices.readBudget(budgetCategory.budgetId);
-    if(!existingBudget) res.json("Budget nof found. Please create a new budget first")
-    const updatedBudget = await budgetServices.appendCategoryToBudget(budgetCategory);
+    const updatedBudget = await budgetServices.addConceptToBudget(categoryConcept);
     res.json({ data: updatedBudget, status: "success" });
   } catch (error) {
     next(error);
   }
 }
+
+const createBudgetCategory = async (req: Request, res: Response, next: NextFunction) => {
+  const budgetCategory = req.body as IBudgetCategoryCreateDTO;
+  try {
+    const updatedBudget = await budgetServices.addCategoryToBudget(budgetCategory);
+    res.json({ data: updatedBudget, status: "success" });
+  } catch (error) {
+    next(error);
+  }
+}
+
 const createBudget = async (req: Request, res: Response, next: NextFunction) => {
   const budget = req.body as IBudgetCreateDTO;
   try {
@@ -24,4 +33,4 @@ const createBudget = async (req: Request, res: Response, next: NextFunction) => 
   }
 };
 
-export default { createBudget, createBudgetCategory };
+export default { createBudget, createBudgetCategory, createCategoryConcept }

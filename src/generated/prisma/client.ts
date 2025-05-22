@@ -42,15 +42,15 @@ path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node")
 path.join(process.cwd(), "generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node")
 
 /**
- * Model BudgetCategory
+ * Model Category
  * 
  */
-export type BudgetCategory = Prisma.BudgetCategoryModel
+export type Category = Prisma.CategoryModel
 /**
- * Model BudgetConcept
+ * Model CategoryConcept
  * 
  */
-export type BudgetConcept = Prisma.BudgetConceptModel
+export type CategoryConcept = Prisma.CategoryConceptModel
 /**
  * Model BudgetBucket
  * 
@@ -76,9 +76,6 @@ export type Transaction = Prisma.TransactionModel
  * 
  */
 export type Budget = Prisma.BudgetModel
-
-export type CATEGORY_TYPE = $Enums.CATEGORY_TYPE
-export const CATEGORY_TYPE = $Enums.CATEGORY_TYPE
 
 export type CONCEPT_TYPE = $Enums.CONCEPT_TYPE
 export const CONCEPT_TYPE = $Enums.CONCEPT_TYPE

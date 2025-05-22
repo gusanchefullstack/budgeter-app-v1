@@ -37,50 +37,41 @@ model Transaction {
   conceptItem ConceptItem
 }
 
-enum CATEGORY_TYPE {
-  INCOME
-  EXPENSE
-}
-
 enum CONCEPT_TYPE {
-  INCOME
-  EXPENSE
+  incomes
+  expenses
 }
 
 enum CONCEPT_FREQUENCY {
   ONE_TIME
   DAILY
-  WEEKLY
   MONTHLY
-  BI_MONTHLY
-  QUARTERLY
-  SEMI_ANNUALLY
   ANNUALLY
 }
 
 model Budget {
-  id        String           @id @default(auto()) @map("_id") @db.ObjectId
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
   name      String
-  owner     User             @relation(fields: [ownerId], references: [id])
-  ownerId   String           @db.ObjectId
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
+  owner     User       @relation(fields: [ownerId], references: [id])
+  ownerId   String     @db.ObjectId
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   startDate DateTime
   endDate   DateTime
-  incomes   BudgetCategory[]
-  expenses  BudgetCategory[]
+  incomes   Category[]
+  expenses  Category[]
+
+
 }
 
-type BudgetCategory {
-  name     String
-  type     CATEGORY_TYPE      @default(EXPENSE)
-  concepts BudgetConcept[]
+type Category {
+  name     String //Utilities
+  concepts CategoryConcept[]
 }
 
-type BudgetConcept {
-  name                    String
-  type                    CONCEPT_TYPE      @default(EXPENSE)
-  frequency               CONCEPT_FREQUENCY @default(ONE_TIME)
+type CategoryConcept {
+  name                    String //Internet Provider, Natural Gas, Water
+  frequency               CONCEPT_FREQUENCY @default(MONTHLY)
   recurringBudgetAmount   Float
   plannedRecurringAmounts BudgetBucket[]
   actualRecurringAmounts  BudgetBucket[]
@@ -93,6 +84,6 @@ type BudgetBucket {
 
 type ConceptItem {
   name      String
-  type      CONCEPT_TYPE      @default(EXPENSE)
-  frequency CONCEPT_FREQUENCY @default(ONE_TIME)
+  type      CONCEPT_TYPE      @default(expenses)
+  frequency CONCEPT_FREQUENCY @default(MONTHLY)
 }

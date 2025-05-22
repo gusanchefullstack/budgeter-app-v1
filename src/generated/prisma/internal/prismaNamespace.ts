@@ -798,20 +798,6 @@ export type EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel> = FieldRefInputType
 export type ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CONCEPT_FREQUENCY[]'>
     
 
-
-/**
- * Reference to a field of type 'CATEGORY_TYPE'
- */
-export type EnumCATEGORY_TYPEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CATEGORY_TYPE'>
-    
-
-
-/**
- * Reference to a field of type 'CATEGORY_TYPE[]'
- */
-export type ListEnumCATEGORY_TYPEFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CATEGORY_TYPE[]'>
-    
-
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */

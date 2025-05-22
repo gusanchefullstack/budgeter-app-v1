@@ -1,63 +1,106 @@
 /* eslint-disable perfectionist/sort-objects */
-import { prisma } from "../db.js";
-import { IBudgetCategoryCreateDTO, IBudgetCreateDTO } from "../types/budget.js";
 
-const readBudget = async (id: string) => {
+import { CONCEPT_TYPE } from "#generated/prisma/enums.js";
+
+import { prisma } from "../db.js";
+import { IBudgetCategoryCreateDTO, IBudgetCreateDTO, ICategoryConceptDTO } from "../types/budget.js";
+
+const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
+  const { budgetId, name, type, frequency, recurringBudgetAmount, category } = concept;
+
   const budget = await prisma.budget.findUnique({
     where: {
-      id,
+      id: budgetId,
     },
   });
-  return budget;
-};
-
-const appendCategoryToBudget = async (category: IBudgetCategoryCreateDTO) => {
-  const { budgetId, name, type } = category;
-  const budgetCategory = { name, type };
-
-  if (budgetCategory.type === "INCOME") {
-    const updatedBudget = await prisma.budget.update({
+  if (type === CONCEPT_TYPE.incomes) {
+    const categories = budget?.incomes.find((income) => income.name === category);
+    categories?.concepts.push({
+      name,
+      frequency,
+      recurringBudgetAmount,
+      plannedRecurringAmounts: [],
+      actualRecurringAmounts: [],
+    });
+    await prisma.budget.update({
       where: {
         id: budgetId,
       },
       data: {
-        incomes: {
-          push: budgetCategory,
+        [type]: {
+          deleteMany: {
+            where:{
+              name:category
+            }
+          },
         },
-      },
-      select: {
-        id: true,
-        name: true,
-        ownerId: true,
-        startDate: true,
-        endDate: true,
-        incomes: true,
-        expenses: true,
       },
     });
-    return updatedBudget;
-  } else {
     const updatedBudget = await prisma.budget.update({
       where: {
         id: budgetId,
       },
       data: {
-        expenses: {
-          push: budgetCategory,
+        [type]: {
+          push: categories,
         },
-      },
-      select: {
-        id: true,
-        name: true,
-        ownerId: true,
-        startDate: true,
-        endDate: true,
-        incomes: true,
-        expenses: true,
       },
     });
     return updatedBudget;
   }
+  if (type === CONCEPT_TYPE.expenses) {
+    const categories = budget?.expenses.find((expense) => expense.name === category);
+    categories?.concepts.push({
+      name,
+      frequency,
+      recurringBudgetAmount,
+      plannedRecurringAmounts: [],
+      actualRecurringAmounts: [],
+    });
+    await prisma.budget.update({
+      where: {
+        id: budgetId,
+      },
+      data: {
+        [type]: {
+          deleteMany: {
+            where:{
+              name:category
+            }
+          },
+        },
+      },
+    });
+    const updatedBudget = await prisma.budget.update({
+      where: {
+        id: budgetId,
+      },
+      data: {
+        [type]: {
+          push: categories,
+        },
+      },
+    });
+    return updatedBudget;
+  }
+};
+
+const addCategoryToBudget = async (category: IBudgetCategoryCreateDTO) => {
+  const { budgetId, name, type } = category;
+  const budget = await prisma.budget.update({
+    where: {
+      id: budgetId,
+    },
+    data: {
+      [type]: {
+        push: {
+          name: name,
+          concepts: [],
+        },
+      },
+    },
+  });
+  return budget;
 };
 
 const createBudget = async (budget: IBudgetCreateDTO) => {
@@ -76,11 +119,9 @@ const createBudget = async (budget: IBudgetCreateDTO) => {
       ownerId: true,
       startDate: true,
       endDate: true,
-      incomes: true,
-      expenses: true,
     },
   });
   return newBudget;
 };
 
-export default { createBudget, readBudget, appendCategoryToBudget };
+export default { createBudget, addCategoryToBudget, addConceptToBudget };
