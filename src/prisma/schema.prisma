@@ -60,8 +60,6 @@ model Budget {
   endDate   DateTime
   incomes   Category[]
   expenses  Category[]
-
-
 }
 
 type Category {
@@ -70,16 +68,21 @@ type Category {
 }
 
 type CategoryConcept {
-  name                    String //Internet Provider, Natural Gas, Water
-  frequency               CONCEPT_FREQUENCY @default(MONTHLY)
-  recurringBudgetAmount   Float
-  plannedRecurringAmounts BudgetBucket[]
-  actualRecurringAmounts  BudgetBucket[]
+  name                         String //Internet Provider, Natural Gas, Water
+  frequency                    CONCEPT_FREQUENCY @default(MONTHLY)
+  plannedRecurringBudgetAmount Float
+  recurringBudgetBuckets       BudgetBucket[]
 }
 
 type BudgetBucket {
-  period String
-  amount Float
+  plannedYear   Int
+  plannedMonth  String?
+  plannedDay    Int?
+  plannedAmount Float
+  actualYear    Int?
+  actualMonth   String?
+  actualDay     Int?
+  actualAmount  Float?
 }
 
 type ConceptItem {

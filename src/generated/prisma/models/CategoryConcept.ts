@@ -32,13 +32,25 @@ export type CategoryConceptCompositeListFilter = {
 }
 
 export type BudgetBucketObjectEqualityInput = {
-  period: string
-  amount: number
+  plannedYear: number
+  plannedMonth?: string | null
+  plannedDay?: number | null
+  plannedAmount: number
+  actualYear?: number | null
+  actualMonth?: string | null
+  actualDay?: number | null
+  actualAmount?: number | null
 }
 
 export type BudgetBucketCreateInput = {
-  period: string
-  amount: number
+  plannedYear: number
+  plannedMonth?: string | null
+  plannedDay?: number | null
+  plannedAmount: number
+  actualYear?: number | null
+  actualMonth?: string | null
+  actualDay?: number | null
+  actualAmount?: number | null
 }
 
 export type CategoryConceptWhereInput = {
@@ -47,9 +59,8 @@ export type CategoryConceptWhereInput = {
   NOT?: Prisma.CategoryConceptWhereInput | Prisma.CategoryConceptWhereInput[]
   name?: Prisma.StringFilter<"CategoryConcept"> | string
   frequency?: Prisma.EnumCONCEPT_FREQUENCYFilter<"CategoryConcept"> | $Enums.CONCEPT_FREQUENCY
-  recurringBudgetAmount?: Prisma.FloatFilter<"CategoryConcept"> | number
-  plannedRecurringAmounts?: Prisma.BudgetBucketCompositeListFilter | Prisma.BudgetBucketObjectEqualityInput[]
-  actualRecurringAmounts?: Prisma.BudgetBucketCompositeListFilter | Prisma.BudgetBucketObjectEqualityInput[]
+  plannedRecurringBudgetAmount?: Prisma.FloatFilter<"CategoryConcept"> | number
+  recurringBudgetBuckets?: Prisma.BudgetBucketCompositeListFilter | Prisma.BudgetBucketObjectEqualityInput[]
 }
 
 export type CategoryConceptListUpdateEnvelopeInput = {
@@ -71,9 +82,8 @@ export type CategoryConceptDeleteManyInput = {
 export type CategoryConceptUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
-  recurringBudgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
-  plannedRecurringAmounts?: Prisma.XOR<Prisma.BudgetBucketListUpdateEnvelopeInput, Prisma.BudgetBucketCreateInput> | Prisma.BudgetBucketCreateInput[]
-  actualRecurringAmounts?: Prisma.XOR<Prisma.BudgetBucketListUpdateEnvelopeInput, Prisma.BudgetBucketCreateInput> | Prisma.BudgetBucketCreateInput[]
+  plannedRecurringBudgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  recurringBudgetBuckets?: Prisma.XOR<Prisma.BudgetBucketListUpdateEnvelopeInput, Prisma.BudgetBucketCreateInput> | Prisma.BudgetBucketCreateInput[]
 }
 
 
@@ -81,9 +91,8 @@ export type CategoryConceptUpdateInput = {
 export type CategoryConceptSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   name?: boolean
   frequency?: boolean
-  recurringBudgetAmount?: boolean
-  plannedRecurringAmounts?: boolean | Prisma.BudgetBucketDefaultArgs<ExtArgs>
-  actualRecurringAmounts?: boolean | Prisma.BudgetBucketDefaultArgs<ExtArgs>
+  plannedRecurringBudgetAmount?: boolean
+  recurringBudgetBuckets?: boolean | Prisma.BudgetBucketDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["categoryConcept"]>
 
 
@@ -91,10 +100,10 @@ export type CategoryConceptSelect<ExtArgs extends runtime.Types.Extensions.Inter
 export type CategoryConceptSelectScalar = {
   name?: boolean
   frequency?: boolean
-  recurringBudgetAmount?: boolean
+  plannedRecurringBudgetAmount?: boolean
 }
 
-export type CategoryConceptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"name" | "frequency" | "recurringBudgetAmount" | "plannedRecurringAmounts" | "actualRecurringAmounts", ExtArgs["result"]["categoryConcept"]>
+export type CategoryConceptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"name" | "frequency" | "plannedRecurringBudgetAmount" | "recurringBudgetBuckets", ExtArgs["result"]["categoryConcept"]>
 export type CategoryConceptInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $CategoryConceptPayload = {
@@ -103,11 +112,10 @@ export type $CategoryConceptPayload = {
   scalars: {
     name: string
     frequency: $Enums.CONCEPT_FREQUENCY
-    recurringBudgetAmount: number
+    plannedRecurringBudgetAmount: number
   }
   composites: {
-    plannedRecurringAmounts: Prisma.$BudgetBucketPayload[]
-    actualRecurringAmounts: Prisma.$BudgetBucketPayload[]
+    recurringBudgetBuckets: Prisma.$BudgetBucketPayload[]
   }
 }
 
@@ -123,7 +131,7 @@ export type CategoryConceptGetPayload<S extends boolean | null | undefined | Cat
 export interface CategoryConceptFieldRefs {
   readonly name: Prisma.FieldRef<"CategoryConcept", 'String'>
   readonly frequency: Prisma.FieldRef<"CategoryConcept", 'CONCEPT_FREQUENCY'>
-  readonly recurringBudgetAmount: Prisma.FieldRef<"CategoryConcept", 'Float'>
+  readonly plannedRecurringBudgetAmount: Prisma.FieldRef<"CategoryConcept", 'Float'>
 }
     
 

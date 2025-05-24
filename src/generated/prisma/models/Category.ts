@@ -57,17 +57,15 @@ export type CategoryWhereInput = {
 export type CategoryConceptObjectEqualityInput = {
   name: string
   frequency: $Enums.CONCEPT_FREQUENCY
-  recurringBudgetAmount: number
-  plannedRecurringAmounts?: Prisma.BudgetBucketObjectEqualityInput[]
-  actualRecurringAmounts?: Prisma.BudgetBucketObjectEqualityInput[]
+  plannedRecurringBudgetAmount: number
+  recurringBudgetBuckets?: Prisma.BudgetBucketObjectEqualityInput[]
 }
 
 export type CategoryConceptCreateInput = {
   name: string
   frequency?: $Enums.CONCEPT_FREQUENCY
-  recurringBudgetAmount: number
-  plannedRecurringAmounts?: Prisma.BudgetBucketCreateInput | Prisma.BudgetBucketCreateInput[]
-  actualRecurringAmounts?: Prisma.BudgetBucketCreateInput | Prisma.BudgetBucketCreateInput[]
+  plannedRecurringBudgetAmount: number
+  recurringBudgetBuckets?: Prisma.BudgetBucketCreateInput | Prisma.BudgetBucketCreateInput[]
 }
 
 export type CategoryUpdateManyInput = {

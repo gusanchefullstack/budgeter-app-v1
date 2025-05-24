@@ -1,9 +1,10 @@
 /* eslint-disable perfectionist/sort-objects */
 
 import { CONCEPT_TYPE } from "#generated/prisma/enums.js";
-
+import * as dateHandler from "typescript-calendar-date";
 import { prisma } from "../db.js";
 import { IBudgetCategoryCreateDTO, IBudgetCreateDTO, ICategoryConceptDTO } from "../types/budget.js";
+import { periodsGenerator } from "./periodsGenerator.js";
 
 const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
   const { budgetId, name, type, frequency, recurringBudgetAmount, category } = concept;
@@ -24,15 +25,17 @@ const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
   if (!categories) {
     throw new Error(`Category ${category} not found in ${type}`);
   }
-
+  
+  const periods = periodsGenerator(frequency, budget.startDate.toISOString(), budget.endDate.toISOString(), recurringBudgetAmount);
   const newConcept = {
     name,
     frequency,
-    recurringBudgetAmount,
-    plannedRecurringAmounts: [],
-    actualRecurringAmounts: [],
+    plannedRecurringBudgetAmount: recurringBudgetAmount,
+    recurringBudgetBuckets: periods,
   };
 
+  
+  
   categories.concepts.push(newConcept);
 
   // Primero eliminamos la categoría existente

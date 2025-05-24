@@ -35,8 +35,14 @@ export type BudgetBucketWhereInput = {
   AND?: Prisma.BudgetBucketWhereInput | Prisma.BudgetBucketWhereInput[]
   OR?: Prisma.BudgetBucketWhereInput[]
   NOT?: Prisma.BudgetBucketWhereInput | Prisma.BudgetBucketWhereInput[]
-  period?: Prisma.StringFilter<"BudgetBucket"> | string
-  amount?: Prisma.FloatFilter<"BudgetBucket"> | number
+  plannedYear?: Prisma.IntFilter<"BudgetBucket"> | number
+  plannedMonth?: Prisma.StringNullableFilter<"BudgetBucket"> | string | null
+  plannedDay?: Prisma.IntNullableFilter<"BudgetBucket"> | number | null
+  plannedAmount?: Prisma.FloatFilter<"BudgetBucket"> | number
+  actualYear?: Prisma.IntNullableFilter<"BudgetBucket"> | number | null
+  actualMonth?: Prisma.StringNullableFilter<"BudgetBucket"> | string | null
+  actualDay?: Prisma.IntNullableFilter<"BudgetBucket"> | number | null
+  actualAmount?: Prisma.FloatNullableFilter<"BudgetBucket"> | number | null
 }
 
 export type BudgetBucketListUpdateEnvelopeInput = {
@@ -56,32 +62,82 @@ export type BudgetBucketDeleteManyInput = {
 }
 
 export type BudgetBucketUpdateInput = {
-  period?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  plannedYear?: Prisma.IntFieldUpdateOperationsInput | number
+  plannedMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  plannedDay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  plannedAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  actualYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actualMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actualDay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actualAmount?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+  unset?: boolean
+}
+
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+  unset?: boolean
 }
 
 
 
 export type BudgetBucketSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  period?: boolean
-  amount?: boolean
+  plannedYear?: boolean
+  plannedMonth?: boolean
+  plannedDay?: boolean
+  plannedAmount?: boolean
+  actualYear?: boolean
+  actualMonth?: boolean
+  actualDay?: boolean
+  actualAmount?: boolean
 }, ExtArgs["result"]["budgetBucket"]>
 
 
 
 export type BudgetBucketSelectScalar = {
-  period?: boolean
-  amount?: boolean
+  plannedYear?: boolean
+  plannedMonth?: boolean
+  plannedDay?: boolean
+  plannedAmount?: boolean
+  actualYear?: boolean
+  actualMonth?: boolean
+  actualDay?: boolean
+  actualAmount?: boolean
 }
 
-export type BudgetBucketOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"period" | "amount", ExtArgs["result"]["budgetBucket"]>
+export type BudgetBucketOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"plannedYear" | "plannedMonth" | "plannedDay" | "plannedAmount" | "actualYear" | "actualMonth" | "actualDay" | "actualAmount", ExtArgs["result"]["budgetBucket"]>
 
 export type $BudgetBucketPayload = {
   name: "BudgetBucket"
   objects: {}
   scalars: {
-    period: string
-    amount: number
+    plannedYear: number
+    plannedMonth: string | null
+    plannedDay: number | null
+    plannedAmount: number
+    actualYear: number | null
+    actualMonth: string | null
+    actualDay: number | null
+    actualAmount: number | null
   }
   composites: {}
 }
@@ -96,8 +152,14 @@ export type BudgetBucketGetPayload<S extends boolean | null | undefined | Budget
  * Fields of the BudgetBucket model
  */
 export interface BudgetBucketFieldRefs {
-  readonly period: Prisma.FieldRef<"BudgetBucket", 'String'>
-  readonly amount: Prisma.FieldRef<"BudgetBucket", 'Float'>
+  readonly plannedYear: Prisma.FieldRef<"BudgetBucket", 'Int'>
+  readonly plannedMonth: Prisma.FieldRef<"BudgetBucket", 'String'>
+  readonly plannedDay: Prisma.FieldRef<"BudgetBucket", 'Int'>
+  readonly plannedAmount: Prisma.FieldRef<"BudgetBucket", 'Float'>
+  readonly actualYear: Prisma.FieldRef<"BudgetBucket", 'Int'>
+  readonly actualMonth: Prisma.FieldRef<"BudgetBucket", 'String'>
+  readonly actualDay: Prisma.FieldRef<"BudgetBucket", 'Int'>
+  readonly actualAmount: Prisma.FieldRef<"BudgetBucket", 'Float'>
 }
     
 
