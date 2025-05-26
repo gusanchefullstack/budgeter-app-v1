@@ -57,7 +57,7 @@ export type CategoryConceptWhereInput = {
   AND?: Prisma.CategoryConceptWhereInput | Prisma.CategoryConceptWhereInput[]
   OR?: Prisma.CategoryConceptWhereInput[]
   NOT?: Prisma.CategoryConceptWhereInput | Prisma.CategoryConceptWhereInput[]
-  name?: Prisma.StringFilter<"CategoryConcept"> | string
+  conceptName?: Prisma.StringFilter<"CategoryConcept"> | string
   frequency?: Prisma.EnumCONCEPT_FREQUENCYFilter<"CategoryConcept"> | $Enums.CONCEPT_FREQUENCY
   plannedRecurringBudgetAmount?: Prisma.FloatFilter<"CategoryConcept"> | number
   recurringBudgetBuckets?: Prisma.BudgetBucketCompositeListFilter | Prisma.BudgetBucketObjectEqualityInput[]
@@ -80,7 +80,7 @@ export type CategoryConceptDeleteManyInput = {
 }
 
 export type CategoryConceptUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  conceptName?: Prisma.StringFieldUpdateOperationsInput | string
   frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   plannedRecurringBudgetAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   recurringBudgetBuckets?: Prisma.XOR<Prisma.BudgetBucketListUpdateEnvelopeInput, Prisma.BudgetBucketCreateInput> | Prisma.BudgetBucketCreateInput[]
@@ -89,7 +89,7 @@ export type CategoryConceptUpdateInput = {
 
 
 export type CategoryConceptSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  name?: boolean
+  conceptName?: boolean
   frequency?: boolean
   plannedRecurringBudgetAmount?: boolean
   recurringBudgetBuckets?: boolean | Prisma.BudgetBucketDefaultArgs<ExtArgs>
@@ -98,19 +98,19 @@ export type CategoryConceptSelect<ExtArgs extends runtime.Types.Extensions.Inter
 
 
 export type CategoryConceptSelectScalar = {
-  name?: boolean
+  conceptName?: boolean
   frequency?: boolean
   plannedRecurringBudgetAmount?: boolean
 }
 
-export type CategoryConceptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"name" | "frequency" | "plannedRecurringBudgetAmount" | "recurringBudgetBuckets", ExtArgs["result"]["categoryConcept"]>
+export type CategoryConceptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"conceptName" | "frequency" | "plannedRecurringBudgetAmount" | "recurringBudgetBuckets", ExtArgs["result"]["categoryConcept"]>
 export type CategoryConceptInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $CategoryConceptPayload = {
   name: "CategoryConcept"
   objects: {}
   scalars: {
-    name: string
+    conceptName: string
     frequency: $Enums.CONCEPT_FREQUENCY
     plannedRecurringBudgetAmount: number
   }
@@ -129,7 +129,7 @@ export type CategoryConceptGetPayload<S extends boolean | null | undefined | Cat
  * Fields of the CategoryConcept model
  */
 export interface CategoryConceptFieldRefs {
-  readonly name: Prisma.FieldRef<"CategoryConcept", 'String'>
+  readonly conceptName: Prisma.FieldRef<"CategoryConcept", 'String'>
   readonly frequency: Prisma.FieldRef<"CategoryConcept", 'CONCEPT_FREQUENCY'>
   readonly plannedRecurringBudgetAmount: Prisma.FieldRef<"CategoryConcept", 'Float'>
 }

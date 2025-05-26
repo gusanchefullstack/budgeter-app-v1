@@ -19,8 +19,8 @@ const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
 
   const categories =
     type === CONCEPT_TYPE.incomes
-      ? budget.incomes.find((income) => income.name === category)
-      : budget.expenses.find((expense) => expense.name === category);
+      ? budget.incomes.find((income) => income.categoryName === category)
+      : budget.expenses.find((expense) => expense.categoryName === category);
 
   if (!categories) {
     throw new Error(`Category ${category} not found in ${type}`);
@@ -28,7 +28,7 @@ const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
   
   const periods = periodsGenerator(frequency, budget.startDate.toISOString(), budget.endDate.toISOString(), recurringBudgetAmount);
   const newConcept = {
-    name,
+    conceptName: name,
     frequency,
     plannedRecurringBudgetAmount: recurringBudgetAmount,
     recurringBudgetBuckets: periods,
@@ -44,7 +44,7 @@ const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
     data: {
       [type]: {
         deleteMany: {
-          where: { name: category },
+          where: { categoryName: category },
         },
       },
     },
@@ -65,20 +65,46 @@ const addConceptToBudget = async (concept: ICategoryConceptDTO) => {
 
 const addCategoryToBudget = async (category: IBudgetCategoryCreateDTO) => {
   const { budgetId, name, type } = category;
-  const budget = await prisma.budget.update({
+  
+  const budget = await prisma.budget.findUnique({
+    where: { id: budgetId },
+  });
+
+  if (!budget) {
+    throw new Error("Budget not found");
+  }
+
+
+  const categoryExists = await prisma.budget.findUnique({
+    where: {
+      id: budgetId,
+      [type]: {
+        some: {
+          categoryName: name,
+        },
+      },
+    },
+  });
+
+  if (categoryExists) {
+    throw new Error(`Category ${name} already exists in ${type}`);
+  }
+
+    const updatedBudget = await prisma.budget.update({
     where: {
       id: budgetId,
     },
     data: {
       [type]: {
         push: {
-          name: name,
+          categoryName: name,
           concepts: [],
         },
       },
     },
   });
-  return budget;
+  return updatedBudget;
+  
 };
 
 const createBudget = async (budget: IBudgetCreateDTO) => {

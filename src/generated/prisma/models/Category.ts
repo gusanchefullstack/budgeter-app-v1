@@ -50,19 +50,19 @@ export type CategoryWhereInput = {
   AND?: Prisma.CategoryWhereInput | Prisma.CategoryWhereInput[]
   OR?: Prisma.CategoryWhereInput[]
   NOT?: Prisma.CategoryWhereInput | Prisma.CategoryWhereInput[]
-  name?: Prisma.StringFilter<"Category"> | string
+  categoryName?: Prisma.StringFilter<"Category"> | string
   concepts?: Prisma.CategoryConceptCompositeListFilter | Prisma.CategoryConceptObjectEqualityInput[]
 }
 
 export type CategoryConceptObjectEqualityInput = {
-  name: string
+  conceptName: string
   frequency: $Enums.CONCEPT_FREQUENCY
   plannedRecurringBudgetAmount: number
   recurringBudgetBuckets?: Prisma.BudgetBucketObjectEqualityInput[]
 }
 
 export type CategoryConceptCreateInput = {
-  name: string
+  conceptName: string
   frequency?: $Enums.CONCEPT_FREQUENCY
   plannedRecurringBudgetAmount: number
   recurringBudgetBuckets?: Prisma.BudgetBucketCreateInput | Prisma.BudgetBucketCreateInput[]
@@ -78,31 +78,31 @@ export type CategoryDeleteManyInput = {
 }
 
 export type CategoryUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryName?: Prisma.StringFieldUpdateOperationsInput | string
   concepts?: Prisma.XOR<Prisma.CategoryConceptListUpdateEnvelopeInput, Prisma.CategoryConceptCreateInput> | Prisma.CategoryConceptCreateInput[]
 }
 
 
 
 export type CategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  name?: boolean
+  categoryName?: boolean
   concepts?: boolean | Prisma.CategoryConceptDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["category"]>
 
 
 
 export type CategorySelectScalar = {
-  name?: boolean
+  categoryName?: boolean
 }
 
-export type CategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"name" | "concepts", ExtArgs["result"]["category"]>
+export type CategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"categoryName" | "concepts", ExtArgs["result"]["category"]>
 export type CategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $CategoryPayload = {
   name: "Category"
   objects: {}
   scalars: {
-    name: string
+    categoryName: string
   }
   composites: {
     concepts: Prisma.$CategoryConceptPayload[]
@@ -119,7 +119,7 @@ export type CategoryGetPayload<S extends boolean | null | undefined | CategoryDe
  * Fields of the Category model
  */
 export interface CategoryFieldRefs {
-  readonly name: Prisma.FieldRef<"Category", 'String'>
+  readonly categoryName: Prisma.FieldRef<"Category", 'String'>
 }
     
 

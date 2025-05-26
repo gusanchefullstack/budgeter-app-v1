@@ -347,7 +347,7 @@ export type BudgetOrderByRelationAggregateInput = {
 }
 
 export type CategoryObjectEqualityInput = {
-  name: string
+  categoryName: string
   concepts?: Prisma.CategoryConceptObjectEqualityInput[]
 }
 
@@ -424,7 +424,7 @@ export type BudgetUncheckedUpdateManyWithoutOwnerNestedInput = {
 }
 
 export type CategoryCreateInput = {
-  name: string
+  categoryName: string
   concepts?: Prisma.CategoryConceptCreateInput | Prisma.CategoryConceptCreateInput[]
 }
 

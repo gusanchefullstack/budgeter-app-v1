@@ -63,12 +63,12 @@ model Budget {
 }
 
 type Category {
-  name     String //Utilities
-  concepts CategoryConcept[]
+  categoryName String
+  concepts     CategoryConcept[]
 }
 
 type CategoryConcept {
-  name                         String //Internet Provider, Natural Gas, Water
+  conceptName                  String
   frequency                    CONCEPT_FREQUENCY @default(MONTHLY)
   plannedRecurringBudgetAmount Float
   recurringBudgetBuckets       BudgetBucket[]
