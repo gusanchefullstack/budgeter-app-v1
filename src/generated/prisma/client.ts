@@ -57,11 +57,6 @@ export type CategoryConcept = Prisma.CategoryConceptModel
  */
 export type BudgetBucket = Prisma.BudgetBucketModel
 /**
- * Model ConceptItem
- * 
- */
-export type ConceptItem = Prisma.ConceptItemModel
-/**
  * Model User
  * 
  */

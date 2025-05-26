@@ -34,7 +34,10 @@ model Transaction {
   updatedAt   DateTime    @updatedAt
   owner       User        @relation(fields: [ownerId], references: [id])
   ownerId     String      @db.ObjectId
-  conceptItem ConceptItem
+  frequency   CONCEPT_FREQUENCY @default(MONTHLY)
+  type        CONCEPT_TYPE      @default(expenses)
+  category    String
+  concept     String
 }
 
 enum CONCEPT_TYPE {
@@ -85,8 +88,3 @@ type BudgetBucket {
   actualAmount  Float?
 }
 
-type ConceptItem {
-  name      String
-  type      CONCEPT_TYPE      @default(expenses)
-  frequency CONCEPT_FREQUENCY @default(MONTHLY)
-}

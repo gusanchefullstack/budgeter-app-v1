@@ -674,7 +674,11 @@ export const TransactionScalarFieldEnum = {
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  ownerId: 'ownerId'
+  ownerId: 'ownerId',
+  frequency: 'frequency',
+  type: 'type',
+  category: 'category',
+  concept: 'concept'
 } as const
 
 export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
@@ -758,16 +762,16 @@ export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMode
 
 
 /**
- * Reference to a field of type 'Int'
+ * Reference to a field of type 'CONCEPT_FREQUENCY'
  */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+export type EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CONCEPT_FREQUENCY'>
     
 
 
 /**
- * Reference to a field of type 'Int[]'
+ * Reference to a field of type 'CONCEPT_FREQUENCY[]'
  */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+export type ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CONCEPT_FREQUENCY[]'>
     
 
 
@@ -786,16 +790,16 @@ export type ListEnumCONCEPT_TYPEFieldRefInput<$PrismaModel> = FieldRefInputType<
 
 
 /**
- * Reference to a field of type 'CONCEPT_FREQUENCY'
+ * Reference to a field of type 'Int'
  */
-export type EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CONCEPT_FREQUENCY'>
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
 /**
- * Reference to a field of type 'CONCEPT_FREQUENCY[]'
+ * Reference to a field of type 'Int[]'
  */
-export type ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CONCEPT_FREQUENCY[]'>
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 /**

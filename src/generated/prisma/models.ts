@@ -10,7 +10,6 @@
 export type * from './models/Category.js'
 export type * from './models/CategoryConcept.js'
 export type * from './models/BudgetBucket.js'
-export type * from './models/ConceptItem.js'
 export type * from './models/User.js'
 export type * from './models/Transaction.js'
 export type * from './models/Budget.js'
