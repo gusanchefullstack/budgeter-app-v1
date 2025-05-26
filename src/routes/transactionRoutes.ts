@@ -22,11 +22,6 @@ transactionRouter.post(
     .withMessage("Concept type must be a string incomes or expenses"),
   body("category").exists().withMessage("Concept category is required").isString().withMessage("Concept category must be a string"),
   body("concept").exists().withMessage("Concept name is required").isString().withMessage("Concept name must be a string"),
-  body("frequency")
-    .exists()
-    .withMessage("Concept item frequency is required")
-    .isIn(["ONE_TIME", "DAILY", "MONTHLY","ANUALLY"])
-    .withMessage("Concept item frequency must be one of ONETIME, DAILY, MONTHLY, ANUALLY"),
   body("ownerId").exists().withMessage("Owner id is required").isString().withMessage("Valid ownerId is required"),
   inputValidator,
   transactionController.createTransaction,

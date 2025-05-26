@@ -8,8 +8,8 @@ import { BudgetBucket } from "#generated/prisma/client.js";
 
 export const periodsGenerator = (frequency: CONCEPT_FREQUENCY, start: string, end: string, recurringBudgetAmount: number) => {
   let dailyPeriods: CalendarDate[] = [];
-  let monthlyPeriods: CalendarMonth[] = [];
-  let annualPeriods: CalendarYear[] = [];
+  let monthlyPeriods: CalendarDate[] = [];
+  let annualPeriods: CalendarDate[] = [];
   let oneTimePeriod: CalendarDate = getOneTimePeriod(end);
   let periods: BudgetBucket[] = [];
 
@@ -32,7 +32,7 @@ export const periodsGenerator = (frequency: CONCEPT_FREQUENCY, start: string, en
       periods = monthlyPeriods.map((period) => ({
         plannedYear: period.year,
         plannedMonth: period.month,
-        plannedDay: null,
+        plannedDay: period.day,
         plannedAmount: recurringBudgetAmount,
         actualYear: null,
         actualMonth: null,
@@ -44,8 +44,8 @@ export const periodsGenerator = (frequency: CONCEPT_FREQUENCY, start: string, en
       annualPeriods = getAnnualPeriods(start, end);
       periods = annualPeriods.map((period) => ({
         plannedYear: period.year,
-        plannedMonth: null,
-        plannedDay: null,
+        plannedMonth:  period.month,
+        plannedDay: period.day,
         plannedAmount: recurringBudgetAmount,
         actualYear: null,
         actualMonth: null,

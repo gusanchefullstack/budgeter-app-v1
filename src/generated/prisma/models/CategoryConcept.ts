@@ -86,6 +86,10 @@ export type CategoryConceptUpdateInput = {
   recurringBudgetBuckets?: Prisma.XOR<Prisma.BudgetBucketListUpdateEnvelopeInput, Prisma.BudgetBucketCreateInput> | Prisma.BudgetBucketCreateInput[]
 }
 
+export type EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput = {
+  set?: $Enums.CONCEPT_FREQUENCY
+}
+
 
 
 export type CategoryConceptSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{

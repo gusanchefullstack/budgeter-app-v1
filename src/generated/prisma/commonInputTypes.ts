@@ -117,13 +117,6 @@ export type FloatFilter<$PrismaModel = never> = {
   not?: Prisma.NestedFloatFilter<$PrismaModel> | number
 }
 
-export type EnumCONCEPT_FREQUENCYFilter<$PrismaModel = never> = {
-  equals?: $Enums.CONCEPT_FREQUENCY | Prisma.EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  in?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel> | $Enums.CONCEPT_FREQUENCY
-}
-
 export type EnumCONCEPT_TYPEFilter<$PrismaModel = never> = {
   equals?: $Enums.CONCEPT_TYPE | Prisma.EnumCONCEPT_TYPEFieldRefInput<$PrismaModel>
   in?: $Enums.CONCEPT_TYPE[] | Prisma.ListEnumCONCEPT_TYPEFieldRefInput<$PrismaModel>
@@ -145,16 +138,6 @@ export type FloatWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedFloatFilter<$PrismaModel>
   _min?: Prisma.NestedFloatFilter<$PrismaModel>
   _max?: Prisma.NestedFloatFilter<$PrismaModel>
-}
-
-export type EnumCONCEPT_FREQUENCYWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.CONCEPT_FREQUENCY | Prisma.EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  in?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCONCEPT_FREQUENCYWithAggregatesFilter<$PrismaModel> | $Enums.CONCEPT_FREQUENCY
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel>
 }
 
 export type EnumCONCEPT_TYPEWithAggregatesFilter<$PrismaModel = never> = {
@@ -290,13 +273,6 @@ export type NestedFloatFilter<$PrismaModel = never> = {
   not?: Prisma.NestedFloatFilter<$PrismaModel> | number
 }
 
-export type NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel = never> = {
-  equals?: $Enums.CONCEPT_FREQUENCY | Prisma.EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  in?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel> | $Enums.CONCEPT_FREQUENCY
-}
-
 export type NestedEnumCONCEPT_TYPEFilter<$PrismaModel = never> = {
   equals?: $Enums.CONCEPT_TYPE | Prisma.EnumCONCEPT_TYPEFieldRefInput<$PrismaModel>
   in?: $Enums.CONCEPT_TYPE[] | Prisma.ListEnumCONCEPT_TYPEFieldRefInput<$PrismaModel>
@@ -320,16 +296,6 @@ export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedFloatFilter<$PrismaModel>
 }
 
-export type NestedEnumCONCEPT_FREQUENCYWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.CONCEPT_FREQUENCY | Prisma.EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  in?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCONCEPT_FREQUENCYWithAggregatesFilter<$PrismaModel> | $Enums.CONCEPT_FREQUENCY
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel>
-}
-
 export type NestedEnumCONCEPT_TYPEWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.CONCEPT_TYPE | Prisma.EnumCONCEPT_TYPEFieldRefInput<$PrismaModel>
   in?: $Enums.CONCEPT_TYPE[] | Prisma.ListEnumCONCEPT_TYPEFieldRefInput<$PrismaModel>
@@ -338,6 +304,20 @@ export type NestedEnumCONCEPT_TYPEWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumCONCEPT_TYPEFilter<$PrismaModel>
   _max?: Prisma.NestedEnumCONCEPT_TYPEFilter<$PrismaModel>
+}
+
+export type EnumCONCEPT_FREQUENCYFilter<$PrismaModel = never> = {
+  equals?: $Enums.CONCEPT_FREQUENCY | Prisma.EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
+  in?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel> | $Enums.CONCEPT_FREQUENCY
+}
+
+export type NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel = never> = {
+  equals?: $Enums.CONCEPT_FREQUENCY | Prisma.EnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
+  in?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CONCEPT_FREQUENCY[] | Prisma.ListEnumCONCEPT_FREQUENCYFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCONCEPT_FREQUENCYFilter<$PrismaModel> | $Enums.CONCEPT_FREQUENCY
 }
 
 export type IntFilter<$PrismaModel = never> = {

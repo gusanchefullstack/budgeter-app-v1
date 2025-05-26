@@ -41,7 +41,6 @@ export type TransactionMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   ownerId: string | null
-  frequency: $Enums.CONCEPT_FREQUENCY | null
   type: $Enums.CONCEPT_TYPE | null
   category: string | null
   concept: string | null
@@ -55,7 +54,6 @@ export type TransactionMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   ownerId: string | null
-  frequency: $Enums.CONCEPT_FREQUENCY | null
   type: $Enums.CONCEPT_TYPE | null
   category: string | null
   concept: string | null
@@ -69,7 +67,6 @@ export type TransactionCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   ownerId: number
-  frequency: number
   type: number
   category: number
   concept: number
@@ -93,7 +90,6 @@ export type TransactionMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   ownerId?: true
-  frequency?: true
   type?: true
   category?: true
   concept?: true
@@ -107,7 +103,6 @@ export type TransactionMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   ownerId?: true
-  frequency?: true
   type?: true
   category?: true
   concept?: true
@@ -121,7 +116,6 @@ export type TransactionCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   ownerId?: true
-  frequency?: true
   type?: true
   category?: true
   concept?: true
@@ -222,7 +216,6 @@ export type TransactionGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   ownerId: string
-  frequency: $Enums.CONCEPT_FREQUENCY
   type: $Enums.CONCEPT_TYPE
   category: string
   concept: string
@@ -259,7 +252,6 @@ export type TransactionWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Transaction"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Transaction"> | Date | string
   ownerId?: Prisma.StringFilter<"Transaction"> | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFilter<"Transaction"> | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFilter<"Transaction"> | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFilter<"Transaction"> | string
   concept?: Prisma.StringFilter<"Transaction"> | string
@@ -274,7 +266,6 @@ export type TransactionOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
-  frequency?: Prisma.SortOrder
   type?: Prisma.SortOrder
   category?: Prisma.SortOrder
   concept?: Prisma.SortOrder
@@ -292,7 +283,6 @@ export type TransactionWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Transaction"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Transaction"> | Date | string
   ownerId?: Prisma.StringFilter<"Transaction"> | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFilter<"Transaction"> | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFilter<"Transaction"> | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFilter<"Transaction"> | string
   concept?: Prisma.StringFilter<"Transaction"> | string
@@ -307,7 +297,6 @@ export type TransactionOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
-  frequency?: Prisma.SortOrder
   type?: Prisma.SortOrder
   category?: Prisma.SortOrder
   concept?: Prisma.SortOrder
@@ -329,7 +318,6 @@ export type TransactionScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   ownerId?: Prisma.StringWithAggregatesFilter<"Transaction"> | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYWithAggregatesFilter<"Transaction"> | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEWithAggregatesFilter<"Transaction"> | $Enums.CONCEPT_TYPE
   category?: Prisma.StringWithAggregatesFilter<"Transaction"> | string
   concept?: Prisma.StringWithAggregatesFilter<"Transaction"> | string
@@ -342,7 +330,6 @@ export type TransactionCreateInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  frequency?: $Enums.CONCEPT_FREQUENCY
   type?: $Enums.CONCEPT_TYPE
   category: string
   concept: string
@@ -357,7 +344,6 @@ export type TransactionUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   ownerId: string
-  frequency?: $Enums.CONCEPT_FREQUENCY
   type?: $Enums.CONCEPT_TYPE
   category: string
   concept: string
@@ -369,7 +355,6 @@ export type TransactionUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFieldUpdateOperationsInput | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFieldUpdateOperationsInput | string
   concept?: Prisma.StringFieldUpdateOperationsInput | string
@@ -383,7 +368,6 @@ export type TransactionUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFieldUpdateOperationsInput | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFieldUpdateOperationsInput | string
   concept?: Prisma.StringFieldUpdateOperationsInput | string
@@ -397,7 +381,6 @@ export type TransactionCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   ownerId: string
-  frequency?: $Enums.CONCEPT_FREQUENCY
   type?: $Enums.CONCEPT_TYPE
   category: string
   concept: string
@@ -409,7 +392,6 @@ export type TransactionUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFieldUpdateOperationsInput | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFieldUpdateOperationsInput | string
   concept?: Prisma.StringFieldUpdateOperationsInput | string
@@ -422,7 +404,6 @@ export type TransactionUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFieldUpdateOperationsInput | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFieldUpdateOperationsInput | string
   concept?: Prisma.StringFieldUpdateOperationsInput | string
@@ -446,7 +427,6 @@ export type TransactionCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
-  frequency?: Prisma.SortOrder
   type?: Prisma.SortOrder
   category?: Prisma.SortOrder
   concept?: Prisma.SortOrder
@@ -464,7 +444,6 @@ export type TransactionMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
-  frequency?: Prisma.SortOrder
   type?: Prisma.SortOrder
   category?: Prisma.SortOrder
   concept?: Prisma.SortOrder
@@ -478,7 +457,6 @@ export type TransactionMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
-  frequency?: Prisma.SortOrder
   type?: Prisma.SortOrder
   category?: Prisma.SortOrder
   concept?: Prisma.SortOrder
@@ -538,10 +516,6 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput = {
-  set?: $Enums.CONCEPT_FREQUENCY
-}
-
 export type EnumCONCEPT_TYPEFieldUpdateOperationsInput = {
   set?: $Enums.CONCEPT_TYPE
 }
@@ -553,7 +527,6 @@ export type TransactionCreateWithoutOwnerInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  frequency?: $Enums.CONCEPT_FREQUENCY
   type?: $Enums.CONCEPT_TYPE
   category: string
   concept: string
@@ -566,7 +539,6 @@ export type TransactionUncheckedCreateWithoutOwnerInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  frequency?: $Enums.CONCEPT_FREQUENCY
   type?: $Enums.CONCEPT_TYPE
   category: string
   concept: string
@@ -608,7 +580,6 @@ export type TransactionScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Transaction"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Transaction"> | Date | string
   ownerId?: Prisma.StringFilter<"Transaction"> | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFilter<"Transaction"> | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFilter<"Transaction"> | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFilter<"Transaction"> | string
   concept?: Prisma.StringFilter<"Transaction"> | string
@@ -621,7 +592,6 @@ export type TransactionCreateManyOwnerInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  frequency?: $Enums.CONCEPT_FREQUENCY
   type?: $Enums.CONCEPT_TYPE
   category: string
   concept: string
@@ -633,7 +603,6 @@ export type TransactionUpdateWithoutOwnerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFieldUpdateOperationsInput | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFieldUpdateOperationsInput | string
   concept?: Prisma.StringFieldUpdateOperationsInput | string
@@ -645,7 +614,6 @@ export type TransactionUncheckedUpdateWithoutOwnerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFieldUpdateOperationsInput | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFieldUpdateOperationsInput | string
   concept?: Prisma.StringFieldUpdateOperationsInput | string
@@ -657,7 +625,6 @@ export type TransactionUncheckedUpdateManyWithoutOwnerInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  frequency?: Prisma.EnumCONCEPT_FREQUENCYFieldUpdateOperationsInput | $Enums.CONCEPT_FREQUENCY
   type?: Prisma.EnumCONCEPT_TYPEFieldUpdateOperationsInput | $Enums.CONCEPT_TYPE
   category?: Prisma.StringFieldUpdateOperationsInput | string
   concept?: Prisma.StringFieldUpdateOperationsInput | string
@@ -673,7 +640,6 @@ export type TransactionSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   createdAt?: boolean
   updatedAt?: boolean
   ownerId?: boolean
-  frequency?: boolean
   type?: boolean
   category?: boolean
   concept?: boolean
@@ -690,13 +656,12 @@ export type TransactionSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   ownerId?: boolean
-  frequency?: boolean
   type?: boolean
   category?: boolean
   concept?: boolean
 }
 
-export type TransactionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "date" | "description" | "createdAt" | "updatedAt" | "ownerId" | "frequency" | "type" | "category" | "concept", ExtArgs["result"]["transaction"]>
+export type TransactionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "date" | "description" | "createdAt" | "updatedAt" | "ownerId" | "type" | "category" | "concept", ExtArgs["result"]["transaction"]>
 export type TransactionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -714,7 +679,6 @@ export type $TransactionPayload<ExtArgs extends runtime.Types.Extensions.Interna
     createdAt: Date
     updatedAt: Date
     ownerId: string
-    frequency: $Enums.CONCEPT_FREQUENCY
     type: $Enums.CONCEPT_TYPE
     category: string
     concept: string
@@ -1118,7 +1082,6 @@ export interface TransactionFieldRefs {
   readonly createdAt: Prisma.FieldRef<"Transaction", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Transaction", 'DateTime'>
   readonly ownerId: Prisma.FieldRef<"Transaction", 'String'>
-  readonly frequency: Prisma.FieldRef<"Transaction", 'CONCEPT_FREQUENCY'>
   readonly type: Prisma.FieldRef<"Transaction", 'CONCEPT_TYPE'>
   readonly category: Prisma.FieldRef<"Transaction", 'String'>
   readonly concept: Prisma.FieldRef<"Transaction", 'String'>

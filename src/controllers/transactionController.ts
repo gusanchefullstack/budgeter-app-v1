@@ -21,11 +21,10 @@ const createTransaction = async (req: Request, res: Response, next: NextFunction
     const ownerId: string = req.body.ownerId as string;
    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     const description: string = req.body.description;
-    const frequency: string = req.body.frequency;
     const type: string = req.body.type;
     const category: string = req.body.category;
     const concept: string = req.body.concept;
-    const transaction = await transactionServices.createTransaction({ amount: amount, frequency: frequency, type: type, category: category, concept: concept, date: new Date(date), description: description, ownerId: ownerId });
+    const transaction = await transactionServices.createTransaction({ amount: amount, type: type, category: category, concept: concept, date: new Date(date), description: description, ownerId: ownerId });
     res.json({ data: transaction, status: "success" });
   } catch (error) {
     next(error)

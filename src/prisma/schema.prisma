@@ -34,7 +34,6 @@ model Transaction {
   updatedAt   DateTime    @updatedAt
   owner       User        @relation(fields: [ownerId], references: [id])
   ownerId     String      @db.ObjectId
-  frequency   CONCEPT_FREQUENCY @default(MONTHLY)
   type        CONCEPT_TYPE      @default(expenses)
   category    String
   concept     String
